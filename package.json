@@ -10,6 +10,7 @@
     "build": "tsc -b ."
   },
   "dependencies": {
+    "@types/node": "^17.0.21",
     "tsc-watch": "^4.6.0",
     "typescript": "^4.5.4"
   }

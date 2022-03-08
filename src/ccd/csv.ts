@@ -1,3 +1,5 @@
+import fs from "fs";
+
 /*
 * URL: https://ccd-school.de/coding-dojo/function-katas/csv-tabellieren/
 * Name: Function Kata „CSV tabellieren“
@@ -17,56 +19,74 @@ Maria Schmitz|Kölner Straße 45|50123 Köln   |43   |
 Paul Meier   |Münchener Weg 1 |87654 München|65   |
 * */
 
-export const csv = () => {
-    const csvText = 'Name;Strasse;Ort;Alter\nPeter Pan;Am Hang 5;12345 Einsam;42\nMaria Schmitz;Kölner Straße 45;50123 Köln;43\nPaul Meier;Münchener Weg 1;87654 München;65'
-    const lines = csvText.split('\n')
+const readCsv = ():Array<string> => {
+    let lines = fs.readFileSync("src/ccd/MOCK_DATA.csv", "utf-8");
+    lines = lines.replace(/\n/g, ";")
+    return lines.split(";")
+}
 
-    let firstWordLenght: number = 0;
-    let secondWordLenght: number = 0;
-    let thirdWordLenght: number = 0;
-    let forthWordLenght: number = 0;
+interface line {
+    name: string;
+    street: string;
+    city: string;
+    age: string;
+}
 
-    const firsts:string[] = [];
-    const seconds:string[] = [];
-    const thirds:string[] = [];
-    const forths:string[] = [];
-
-    lines.forEach((line)=>{
-        const wordsPerLine = line.split(';')
-        if (wordsPerLine[0].length > firstWordLenght) firstWordLenght = wordsPerLine[0].length
-        firsts.push(wordsPerLine[0])
-        if (wordsPerLine[1].length > secondWordLenght) secondWordLenght = wordsPerLine[1].length
-        seconds.push(wordsPerLine[1])
-        if (wordsPerLine[2].length > thirdWordLenght) thirdWordLenght = wordsPerLine[2].length
-        thirds.push(wordsPerLine[2])
-        if (wordsPerLine[3].length > forthWordLenght) forthWordLenght = wordsPerLine[3].length
-        forths.push(wordsPerLine[3])
-    })
-
-    const repeat = (num:number, str: string)=>{
-        return Array(num + 1).join(str);
+const compareLength = (current: number, next: string): number => {
+    if (next){
+        if (next.length > current) return next.length;
     }
+    return current;
+}
 
-    const formatedFirsts = firsts.map((word)=>{
-        const num = firstWordLenght - word.length;
-        return word + repeat(num, " ");
-    })
-    const formatedSeconds = seconds.map((word)=>{
-        const num = secondWordLenght - word.length;
-        return word + repeat(num, " ");
-    })
-    const formatedThirds = thirds.map((word)=>{
-        const num = thirdWordLenght - word.length;
-        return word + repeat(num, " ");
-    })
-    const formatedForths = forths.map((word)=>{
-        const num = forthWordLenght - word.length;
-        return word + repeat(num, " ");
+const formatAttribute = (lineObjectAttribute:string, lenght: number):string => {
+    const whitespace = " ";
+    if (lineObjectAttribute){
+        if (lineObjectAttribute.length < lenght){
+            const difference = lenght - lineObjectAttribute.length;
+            return `${lineObjectAttribute}${whitespace.repeat((difference))}|`
+        }
+    }
+    return `${lineObjectAttribute}|`;
+}
+
+const printLine = (lineObject: line, maxLenghtName: number, maxLengthstreet: number, maxLenghtCity: number, maxLengthAge: number): void => {
+    let name = formatAttribute(lineObject.name,maxLenghtName);
+    let street = formatAttribute(lineObject.street, maxLengthstreet);
+    let city = formatAttribute(lineObject.city, maxLenghtCity);
+    let age = formatAttribute(lineObject.age, maxLengthAge);
+
+    console.log(name,street,city,age);
+}
+
+export const csv = (): void => {
+    const linesAsString = readCsv();
+
+    let maxLenghtName = 0;
+    let maxLengthstreet = 0;
+    let maxLenghtCity = 0;
+    let maxLengthAge = 0;
+
+    const linesAsLine:Array<line> = linesAsString.map((line):line => {
+        const devidedLine: Array<string> = line.split(",");
+
+        maxLenghtName = compareLength(maxLenghtName, (devidedLine[0] as string));
+        maxLengthstreet = compareLength(maxLengthstreet, (devidedLine[1] as string));
+        maxLenghtCity = compareLength(maxLenghtCity, (devidedLine[2] as string));
+        maxLengthAge = compareLength(maxLengthAge, (devidedLine[3] as string));
+
+        return {
+            name: (devidedLine[0] as string),
+            street: (devidedLine[1] as string),
+            city: (devidedLine[2] as string),
+            age: (devidedLine[3] as string)
+        };
     })
 
-    console.log(`${formatedFirsts[0]}|${formatedSeconds[0]}|${formatedThirds[0]}|${formatedForths[0]}|`)
-    console.log(`${repeat(firstWordLenght,"-")}+${repeat(secondWordLenght,"-")}+${repeat(thirdWordLenght,"-")}+${repeat(forthWordLenght,"-")}+`)
-    console.log(`${formatedFirsts[1]}|${formatedSeconds[1]}|${formatedThirds[1]}|${formatedForths[1]}|`)
-    console.log(`${formatedFirsts[2]}|${formatedSeconds[2]}|${formatedThirds[2]}|${formatedForths[2]}|`)
-    console.log(`${formatedFirsts[3]}|${formatedSeconds[3]}|${formatedThirds[3]}|${formatedForths[3]}|`)
+    const minus = "-";
+    printLine(linesAsLine[0], maxLenghtName, maxLengthstreet, maxLenghtCity, maxLengthAge);
+    console.log(`${minus.repeat(maxLenghtName)}+${minus.repeat(maxLengthstreet)} +${minus.repeat(maxLenghtCity)} +${minus.repeat(maxLengthAge)}+`)
+    for (let i = 1; i < linesAsLine.length; i++){
+        printLine(linesAsLine[i], maxLenghtName, maxLengthstreet, maxLenghtCity, maxLengthAge);
+    }
 }

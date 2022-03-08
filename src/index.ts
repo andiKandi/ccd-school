@@ -1,7 +1,5 @@
-import {chars} from "./ccd/chars";
-
 const index = () => {
-     chars();
+    // chars();
     // csv();
     // fizzbuzz();
     // console.log(rot("Hello, World"));
