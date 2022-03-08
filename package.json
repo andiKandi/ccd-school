@@ -1,0 +1,16 @@
+{
+  "name": "template-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "start": "tsc-watch --outDir ./dist --onSuccess 'node dist/index.js'",
+    "build": "tsc -b ."
+  },
+  "dependencies": {
+    "tsc-watch": "^4.6.0",
+    "typescript": "^4.5.4"
+  }
+}
