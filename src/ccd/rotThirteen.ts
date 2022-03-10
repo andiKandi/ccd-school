@@ -5,7 +5,7 @@
  *       Beispiel: Hello, World -> URYYB, JBEYQ
  * */
 
-export const rot = (str: string) => {
+export const rotThirteen = (str: string) => {
   const input = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   const output = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
   const index = (x: string) => {
