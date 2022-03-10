@@ -10,14 +10,14 @@ yarn start
 ```
 Go to index and uncomment the function you want to be running, e.g.:
 ```typescript
-import {chars} from "./ccd/chars";
+import {charCount} from "./ccd/charCount";
 
 const index = () => {
-    chars();
+    charCount();
     // csv();
     // fizzbuzz();
     // console.log(rot("Hello, World"));
-    // rusMul(47,42)
+    // russianMultiplication(47,42)
     // console.log('running')
 }
 index();
