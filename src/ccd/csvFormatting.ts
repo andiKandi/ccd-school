@@ -20,7 +20,7 @@ Paul Meier   |Münchener Weg 1 |87654 München|65   |
 * */
 
 const readCsv = (): Array<string> => {
-  let lines = fs.readFileSync('src/ccd/MOCK_DATA.csv', 'utf-8');
+  let lines = fs.readFileSync('src/ccd/MOCK_DATA.csvFormatting', 'utf-8');
   lines = lines.replace(/\n/g, ';');
   return lines.split(';');
 };
@@ -39,11 +39,11 @@ const compareLength = (current: number, next: string): number => {
   return current;
 };
 
-const formatAttribute = (lineObjectAttribute: string, lenght: number): string => {
+const formatAttribute = (lineObjectAttribute: string, length: number): string => {
   const whitespace = ' ';
   if (lineObjectAttribute) {
-    if (lineObjectAttribute.length < lenght) {
-      const difference = lenght - lineObjectAttribute.length;
+    if (lineObjectAttribute.length < length) {
+      const difference = length - lineObjectAttribute.length;
       return `${lineObjectAttribute}${whitespace.repeat(difference)}|`;
     }
   }
@@ -52,51 +52,51 @@ const formatAttribute = (lineObjectAttribute: string, lenght: number): string =>
 
 const printLine = (
   lineObject: line,
-  maxLenghtName: number,
-  maxLengthstreet: number,
-  maxLenghtCity: number,
+  maxLengthName: number,
+  maxLengthStreet: number,
+  maxLengthCity: number,
   maxLengthAge: number
 ): void => {
-  let name = formatAttribute(lineObject.name, maxLenghtName);
-  let street = formatAttribute(lineObject.street, maxLengthstreet);
-  let city = formatAttribute(lineObject.city, maxLenghtCity);
+  let name = formatAttribute(lineObject.name, maxLengthName);
+  let street = formatAttribute(lineObject.street, maxLengthStreet);
+  let city = formatAttribute(lineObject.city, maxLengthCity);
   let age = formatAttribute(lineObject.age, maxLengthAge);
 
   console.log(name, street, city, age);
 };
 
-export const csv = (): void => {
+export const csvFormatting = (): void => {
   const linesAsString = readCsv();
 
-  let maxLenghtName = 0;
-  let maxLengthstreet = 0;
-  let maxLenghtCity = 0;
+  let maxLengthName = 0;
+  let maxLengthStreet = 0;
+  let maxLengthCity = 0;
   let maxLengthAge = 0;
 
   const linesAsLine: Array<line> = linesAsString.map((line): line => {
-    const devidedLine: Array<string> = line.split(',');
+    const dividedLine: Array<string> = line.split(',');
 
-    maxLenghtName = compareLength(maxLenghtName, devidedLine[0] as string);
-    maxLengthstreet = compareLength(maxLengthstreet, devidedLine[1] as string);
-    maxLenghtCity = compareLength(maxLenghtCity, devidedLine[2] as string);
-    maxLengthAge = compareLength(maxLengthAge, devidedLine[3] as string);
+    maxLengthName = compareLength(maxLengthName, dividedLine[0] as string);
+    maxLengthStreet = compareLength(maxLengthStreet, dividedLine[1] as string);
+    maxLengthCity = compareLength(maxLengthCity, dividedLine[2] as string);
+    maxLengthAge = compareLength(maxLengthAge, dividedLine[3] as string);
 
     return {
-      name: devidedLine[0] as string,
-      street: devidedLine[1] as string,
-      city: devidedLine[2] as string,
-      age: devidedLine[3] as string,
+      name: dividedLine[0] as string,
+      street: dividedLine[1] as string,
+      city: dividedLine[2] as string,
+      age: dividedLine[3] as string,
     };
   });
 
   const minus = '-';
-  printLine(linesAsLine[0], maxLenghtName, maxLengthstreet, maxLenghtCity, maxLengthAge);
+  printLine(linesAsLine[0], maxLengthName, maxLengthStreet, maxLengthCity, maxLengthAge);
   console.log(
-    `${minus.repeat(maxLenghtName)}+${minus.repeat(maxLengthstreet)} +${minus.repeat(
-      maxLenghtCity
+    `${minus.repeat(maxLengthName)}+${minus.repeat(maxLengthStreet)} +${minus.repeat(
+      maxLengthCity
     )} +${minus.repeat(maxLengthAge)}+`
   );
   for (let i = 1; i < linesAsLine.length; i++) {
-    printLine(linesAsLine[i], maxLenghtName, maxLengthstreet, maxLenghtCity, maxLengthAge);
+    printLine(linesAsLine[i], maxLengthName, maxLengthStreet, maxLengthCity, maxLengthAge);
   }
 };
