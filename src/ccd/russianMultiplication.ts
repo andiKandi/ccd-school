@@ -4,15 +4,16 @@
  * Task: Schreibe eine Funktion, die zwei ganze Zahlen mit dem Algorithmus „russische Bauernmultiplikation“ multipliziert.
  * */
 
-export const russianMultiplication = (x: number, y: number) => {
+export const russianMultiplication = (x: number, y: number): void => {
   let answer: number = 0;
 
-  do {
+  while (x >= 1){
     if (Math.floor(x % 2) !== 0) {
       answer += y;
     }
-    x = x / 2;
+    x /= 2;
     y *= 2;
-  } while (x >= 1);
+  }
+
   console.log(answer);
 };

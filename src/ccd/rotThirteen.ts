@@ -5,14 +5,21 @@
  *       Beispiel: Hello, World -> URYYB, JBEYQ
  * */
 
-export const rotThirteen = (str: string) => {
-  const input = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  const output = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
-  const index = (x: string) => {
-    return input.indexOf(x);
+export const rotThirteen = (str: string): string => {
+  const inputLetter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const outputLetter = 'NOPQRSTUVWXYZABCDEFGHIJKLM';
+
+  const index = (letter: string, input: string) => {
+    return input.indexOf(letter);
   };
-  const translate = (x: string) => {
-    return index(x) > -1 ? output[index(x)] : x;
+
+  const encode = (letter: string, inputLetter: string, outputLetter: string) => {
+    return index(letter, inputLetter) > -1 ? outputLetter[index(letter,inputLetter)] : letter;
   };
-  return str.toUpperCase().split('').map(translate).join('');
+
+  return str
+    .toUpperCase()
+    .split('')
+    .map((letter)=>encode(letter, inputLetter, outputLetter))
+    .join('');
 };

@@ -19,11 +19,12 @@ Maria Schmitz|Kölner Straße 45|50123 Köln   |43   |
 Paul Meier   |Münchener Weg 1 |87654 München|65   |
 * */
 
-const readCsv = (): Array<string> => {
-  let lines = fs.readFileSync('src/ccd/MOCK_DATA.csvFormatting', 'utf-8');
-  lines = lines.replace(/\n/g, ';');
-  return lines.split(';');
+const readCsv = (): string[] => {
+  return fs
+    .readFileSync('src/ccd/MOCK_DATA.csv', 'utf-8')
+    .split(/\n/);
 };
+
 
 interface line {
   name: string;
@@ -39,15 +40,15 @@ const compareLength = (current: number, next: string): number => {
   return current;
 };
 
-const formatAttribute = (lineObjectAttribute: string, length: number): string => {
+const formatLineObject = (lineObject: string, maxLength: number): string => {
   const whitespace = ' ';
-  if (lineObjectAttribute) {
-    if (lineObjectAttribute.length < length) {
-      const difference = length - lineObjectAttribute.length;
-      return `${lineObjectAttribute}${whitespace.repeat(difference)}|`;
+  if (lineObject) {
+    if (lineObject.length < maxLength) {
+      const difference = maxLength - lineObject.length;
+      return `${lineObject}${whitespace.repeat(difference)}|`;
     }
   }
-  return `${lineObjectAttribute}|`;
+  return `${lineObject}|`;
 };
 
 const printLine = (
@@ -57,10 +58,10 @@ const printLine = (
   maxLengthCity: number,
   maxLengthAge: number
 ): void => {
-  let name = formatAttribute(lineObject.name, maxLengthName);
-  let street = formatAttribute(lineObject.street, maxLengthStreet);
-  let city = formatAttribute(lineObject.city, maxLengthCity);
-  let age = formatAttribute(lineObject.age, maxLengthAge);
+  let name = formatLineObject(lineObject.name, maxLengthName);
+  let street = formatLineObject(lineObject.street, maxLengthStreet);
+  let city = formatLineObject(lineObject.city, maxLengthCity);
+  let age = formatLineObject(lineObject.age, maxLengthAge);
 
   console.log(name, street, city, age);
 };

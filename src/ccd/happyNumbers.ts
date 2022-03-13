@@ -6,7 +6,7 @@
 *       19 -> 1^2 + 9^2 = 82 -> 8^2 + 2^2 = 68 -> 6^2 + 8^2 = 100 -> 1^2 + 0^2 + 0^2 = 1
 * */
 
-const numberToDigits = (num: number): number[] => {
+const splitNumberIntoDigits = (num: number): number[] => {
   return num
     .toString()
     .split('')
@@ -21,14 +21,14 @@ const squareOfDigits = (digits: number[]): number[] => {
   });
 };
 
-const sum = (squaredDigits: number[]): number => {
-  return squaredDigits.reduce((partialSum, a) => partialSum + a, 0);
+const sumOfSquaredDigits = (squaredDigits: number[]): number => {
+  return squaredDigits.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
 };
 
 const buildSumOfDigits = (num: number): number => {
-  const digits = numberToDigits(num);
+  const digits = splitNumberIntoDigits(num);
   const squaredDigits = squareOfDigits(digits);
-  return sum(squaredDigits);
+  return sumOfSquaredDigits(squaredDigits);
 };
 
 const isEndlessLoop = (previousNumbers: number[], currentNumber: number): boolean => {
@@ -46,10 +46,11 @@ export const happyNumbers = (previousNumbers: number[], currentNumber: number): 
   }
   previousNumbers.push(currentNumber);
 
-  const happyNumber = buildSumOfDigits(currentNumber);
   if (isHappyNumber(currentNumber)) {
     console.log(`${previousNumbers[0]} is a HAPPY number!`);
     return;
   }
+
+  const happyNumber = buildSumOfDigits(currentNumber);
   happyNumbers(previousNumbers, happyNumber);
 };

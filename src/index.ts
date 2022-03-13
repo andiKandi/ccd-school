@@ -41,4 +41,4 @@ const index = (challengeNumber: number) => {
       break;
   }
 };
-index(7);
+index(5);
