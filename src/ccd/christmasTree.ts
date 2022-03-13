@@ -29,12 +29,12 @@ export const christmasTree = (treeHeight: number) => {
 
   const drawTree = (treeLevels: TreeLevel[]): void => {
     const drawTwig = (num: number): string => {
-      const twig = 'X';
+      const twig: string = 'X';
       return twig.repeat(num);
     };
 
     const drawWhitespace = (num: number): string => {
-      const whitespace = ' ';
+      const whitespace: string = ' ';
       return whitespace.repeat(num);
     };
 

@@ -9,7 +9,7 @@ import { christmasTree } from './ccd/christmasTree';
 const index = (challengeNumber: number) => {
   switch (challengeNumber) {
     case 1: {
-      charCount();
+      charCount('Das darf nicht sein');
       break;
     }
     case 2: {
