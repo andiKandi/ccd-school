@@ -1,15 +1,15 @@
-import { charCount } from './ccd/charCount';
+import { charCount } from './ccd/charCount/charCount';
 import { csvFormatting } from './ccd/csvFormatting';
 import { fizzbuzz } from './ccd/fizzbuzz';
 import { happyNumbers } from './ccd/happyNumbers';
 import { rotThirteen } from './ccd/rotThirteen';
-import { russianMultiplication } from './ccd/russianMultiplication';
+import { russianMultiplication } from './ccd/russianMultiplication/russianMultiplication';
 import { christmasTree } from './ccd/christmasTree';
 
 const index = (challengeNumber: number) => {
   switch (challengeNumber) {
     case 1: {
-      charCount('Das darf nicht sein');
+      console.log(charCount('Das darf nicht sein'));
       break;
     }
     case 2: {
@@ -25,7 +25,7 @@ const index = (challengeNumber: number) => {
       break;
     }
     case 5: {
-      russianMultiplication(47, 42);
+      console.log(russianMultiplication(47, 42));
       break;
     }
     case 6: {
@@ -41,4 +41,4 @@ const index = (challengeNumber: number) => {
       break;
   }
 };
-index(5);
+index(1);

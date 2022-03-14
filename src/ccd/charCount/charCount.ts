@@ -5,11 +5,11 @@
  *       Die Eingabe der Funktion ist ein string, die Ausgabe ein Dictionary von char nach int
  * */
 
-interface CharNum {
+export interface CharNum {
   [char: string]: number;
 }
 
-export const charCount = (input: string): void => {
+export const charCount = (input: string): CharNum => {
   const splitInput: string[] = input.split('');
 
   const charMap: CharNum = {};
@@ -20,5 +20,5 @@ export const charCount = (input: string): void => {
     } else charMap[char] = 1;
   });
 
-  console.log(charMap);
+  return charMap;
 };
