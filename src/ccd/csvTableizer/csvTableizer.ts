@@ -1,17 +1,17 @@
 import fs from 'fs';
 
 /*
-* URL: https://ccd-school.de/coding-dojo/function-katas/csv-tabellieren/
-* Name: Function Kata „CSV tabellieren“
-* Task: Schreibe eine Funktion, die CSV Zeilen tabelliert.
-*
-*       Beispiel für eine mögliche Eingabe:
+* URL: https://ccd-school.de/en/coding-dojo/function-katas/csv-table-izer/
+* Name: Function Kata “CSV Table-izer”
+* Task: Write a function to create a table from CSV data.
+
+Example for a possible input:
 Name;Strasse;Ort;Alter
 Peter Pan;Am Hang 5;12345 Einsam;42
 Maria Schmitz;Kölner Straße 45;50123 Köln;43
 Paul Meier;Münchener Weg 1;87654 München;65
-*
-*        Ausgabe für das obige Beispiel:
+
+Example output for the above input:
 Name         |Strasse         |Ort          |Alter|
 -------------+----------------+-------------+-----+
 Peter Pan    |Am Hang 5       |12345 Einsam |42   |
@@ -20,11 +20,8 @@ Paul Meier   |Münchener Weg 1 |87654 München|65   |
 * */
 
 const readCsv = (): string[] => {
-  return fs
-    .readFileSync('src/ccd/MOCK_DATA.csv', 'utf-8')
-    .split(/\n/);
+  return fs.readFileSync('src/ccd/csvTableizer/MOCK_DATA.csv', 'utf-8').split(/\n/);
 };
-
 
 interface line {
   name: string;
@@ -66,7 +63,7 @@ const printLine = (
   console.log(name, street, city, age);
 };
 
-export const csvFormatting = (): void => {
+export const csvTableizer = (): void => {
   const linesAsString = readCsv();
 
   let maxLengthName = 0;
