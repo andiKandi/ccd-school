@@ -1,23 +1,26 @@
-import { charCount } from './ccd/charCount/charCount';
-import { csvFormatting } from './ccd/csvFormatting';
-import { fizzbuzz } from './ccd/fizzbuzz';
+import { countCharacters } from './ccd/countCharacters/countCharacters';
+import { csvTableizer } from './ccd/csvTableizer/csvTableizer';
+import { fizzbuzz } from './ccd/fizzbuzz/fizzbuzz';
 import { happyNumbers } from './ccd/happyNumbers';
 import { rotThirteen } from './ccd/rotThirteen';
 import { russianMultiplication } from './ccd/russianMultiplication/russianMultiplication';
 import { christmasTree } from './ccd/christmasTree';
+import { fromRomanNumerals } from './ccd/fromRomanNumerals/fromRomanNumerals';
 
 const index = (challengeNumber: number) => {
   switch (challengeNumber) {
     case 1: {
-      console.log(charCount('Das darf nicht sein'));
+      console.log(countCharacters('Das darf nicht sein'));
       break;
     }
     case 2: {
-      csvFormatting();
+      csvTableizer();
       break;
     }
     case 3: {
-      fizzbuzz();
+      for (let i = 0; i <= 101; i++) {
+        console.log(fizzbuzz(i));
+      }
       break;
     }
     case 4: {
@@ -37,8 +40,12 @@ const index = (challengeNumber: number) => {
       christmasTree(5);
       break;
     }
+    case 8: {
+      console.log(fromRomanNumerals('XCIX'));
+      break;
+    }
     default:
       break;
   }
 };
-index(1);
+index(2);
