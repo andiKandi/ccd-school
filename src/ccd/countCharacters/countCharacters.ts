@@ -9,7 +9,7 @@ export interface CharNum {
   [char: string]: number;
 }
 
-export const charCount = (input: string): CharNum => {
+export const countCharacters = (input: string): CharNum => {
   const splitInput: string[] = input.split('');
 
   const charMap: CharNum = {};
