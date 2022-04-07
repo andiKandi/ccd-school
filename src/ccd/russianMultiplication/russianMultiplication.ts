@@ -1,7 +1,7 @@
 /*
- * URL: https://ccd-school.de/coding-dojo/function-katas/russische-bauernmultiplikation/
- * Name: Function Kata „Russische Bauernmultiplikation“
- * Task: Schreibe eine Funktion, die zwei ganze Zahlen mit dem Algorithmus „russische Bauernmultiplikation“ multipliziert.
+ * URL: https://ccd-school.de/en/coding-dojo/function-katas/russian-peasant-multiplication/
+ * Name: Function Kata „Russian Peasant Multiplication“
+ * Task: Write a function that multiplies two whole numbers by using the Russian Peasant Multiplication algorithm.
  * */
 
 export const russianMultiplication = (x: number, y: number): number => {
