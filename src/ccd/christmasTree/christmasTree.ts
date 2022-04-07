@@ -1,8 +1,9 @@
 /*
- * URL: https://ccd-school.de/coding-dojo/function-katas/tannenbaum/
- * Name: Function Kata „Tannenbaum“
- * Task: Schreibe eine Funktion, die einen Tannenbaum mit ASCII-Art „gezeichnet“ als Text zurückliefert.
- * Eingabe ist die Höhe des Tannenbaums. Als Beispiel ein Tannenbaum der Höhe 5:
+ * URL: https://ccd-school.de/en/coding-dojo/function-katas/christmas-tree/
+ * Name: Function Kata „Christmas tree“
+ * Task: Write a function that „draws“ a Christmas tree with ASCII characters (ASCII art).
+         The „picture“should be returned as a collection of strings.
+         See the following example of a tree with height 5:
        X
       XXX
      XXXXX

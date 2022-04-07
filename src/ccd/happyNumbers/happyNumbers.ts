@@ -1,8 +1,9 @@
 /*
-* URL: https://ccd-school.de/coding-dojo/function-katas/froehliche-zahlen/
-* Name: Function Kata „Fröhliche Zahlen“
-* Task: Entwickle eine Funktion, die erkennt, ob eine Zahl „fröhlich“ ist oder nicht.
-        Eine "Fröhliche Zahl" ist eine Zahl, bei der die Summe der Quadrate ihrer Ziffern „auf die Dauer“ 1 ergibt. Beispiel:
+* URL: https://ccd-school.de/en/coding-dojo/function-katas/happy-numbers/
+* Name: Function Kata “Happy Numbers”
+* Task: Write a function to determine whether a given number is “happy” or not.
+        A “happy number” is a number where the sum of the squares of its digits “in the long run” is equal to 1.
+        Example:
 *       19 -> 1^2 + 9^2 = 82 -> 8^2 + 2^2 = 68 -> 6^2 + 8^2 = 100 -> 1^2 + 0^2 + 0^2 = 1
 * */
 

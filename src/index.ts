@@ -1,10 +1,10 @@
 import { countCharacters } from './ccd/countCharacters/countCharacters';
 import { csvTableizer } from './ccd/csvTableizer/csvTableizer';
 import { fizzbuzz } from './ccd/fizzbuzz/fizzbuzz';
-import { happyNumbers } from './ccd/happyNumbers';
-import { rotThirteen } from './ccd/rotThirteen';
+import { happyNumbers } from './ccd/happyNumbers/happyNumbers';
+import { rotThirteen } from './ccd/rotThirteen/rotThirteen';
 import { russianMultiplication } from './ccd/russianMultiplication/russianMultiplication';
-import { christmasTree } from './ccd/christmasTree';
+import { christmasTree } from './ccd/christmasTree/christmasTree';
 import { fromRomanNumerals } from './ccd/fromRomanNumerals/fromRomanNumerals';
 
 const index = (challengeNumber: number) => {
