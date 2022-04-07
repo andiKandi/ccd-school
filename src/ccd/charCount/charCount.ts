@@ -1,8 +1,8 @@
 /*
- * URL: https://ccd-school.de/coding-dojo/function-katas/zeichen-zaehlen/
- * Name: Function Kata „Zeichen zählen“
- * Task: Entwickle eine Funktion, welche die Anzahl der in einem String vorkommenden Zeichen zählt.
- *       Die Eingabe der Funktion ist ein string, die Ausgabe ein Dictionary von char nach int
+ * URL: https://ccd-school.de/en/coding-dojo/function-katas/count-characters/
+ * Name: Function Kata “Count Characters”
+ * Task: Write a function to count the number of occurrences of characters in a string.
+ *       The input to the function is a string, its output a Dictionary (map) of char/int pairs.
  * */
 
 export interface CharNum {
